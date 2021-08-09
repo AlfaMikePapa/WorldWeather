@@ -10,7 +10,7 @@ const currentTempEl = document.getElementById('current-temp');
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const API_KEY ='f09c158a26f89df814d9fef2f3c256ea';
+const API_KEY ='b8b32a9b8cc4625fcf1b41e6586ff7de';
 
 setInterval(() => {
   const time = new Date();
@@ -22,7 +22,7 @@ setInterval(() => {
   const minutes = time.getMinutes();
   const ampm = hour >=12 ? 'PM' : 'AM'
 
-  timeEl.innerHTML = (hoursIn12HrFormat < 10? '0'+hoursIn12HrFormat : hoursIn12HrFormat) + ':' + (minutes < 10?? '0'+minutes: minutes)+ ' ' + `<span id="am-pm">${ampm}</span>`
+  timeEl.innerHTML = (hoursIn12HrFormat < 10? '0'+hoursIn12HrFormat : hoursIn12HrFormat) + ':' + (minutes < 10? '0'+minutes: minutes)+ ' ' + `<span id="am-pm">${ampm}</span>`
 
   dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month]
 
@@ -66,7 +66,6 @@ function showWeatherData (data) {
       <div>${wind_speed}</div>
     </div>
   
-
   <div class="weather-item">
       <div>Sunrise</div>
       <div>${window.moment(sunrise * 1000).format('HH:mm a')}</div>
@@ -106,7 +105,6 @@ data.daily.forEach((day, idx) => {
     `
   }
 })
-
 
 weatherForecastEl.innerHTML = otherDayForcast;
 }
