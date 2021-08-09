@@ -27,4 +27,21 @@ setInterval(() => {
   dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month]
 
 }, 1000);
+
+getWeatherData()
+function getWeatherData() {
+  navigator.geolocation.getCurrentPosition((success) => {
+
+    let {latitude, longtitude } = success.coords;
+
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
+
+      console.log(data);
+    })
+
+  })
+
 }
+
+
+
