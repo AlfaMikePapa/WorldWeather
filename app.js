@@ -37,11 +37,48 @@ function getWeatherData() {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
 
       console.log(data);
+      showWeatherData(data);
     })
 
   })
 
 }
+
+function showWeatherData (data) {
+  let {humidity, pressure, sunrice, sunset, wind_speed} = data.current;
+
+  timezone.innerHTML = data.timezone;
+  countryEl.innerHTML = data.lat + 'N ' + data.lon+'E'
+
+  currentWeatherItemsEl.innerHTML = 
+  `<div class="weather-item">
+      <div>Humidity</div>
+      <div>${humidity}%</div>
+    </div>
+  
+    <div class="weather-item">
+      <div>Pressure</div>
+      <div>${pressure}</div>
+    </div>
+
+    <div class="weather-item">
+      <div>Wind Speed</div>
+      <div>${wind_speed}</div>
+    </div>
+  
+
+  <div class="weather-item">
+      <div>Sunrise</div>
+      <div>${window.moment(sunrise * 1000).format('HH:mm a')}</div>
+    </div>
+    <div class="weather-item">
+      <div>Sunset</div>
+      <div>${window.moment(sunset*1000).format('HH:mm a')}</div>
+    </div>
+
+
+`;
+
 
 
 
