@@ -75,7 +75,6 @@ function showWeatherData (data) {
       <div>${window.moment(sunset*1000).format('HH:mm a')}</div>
     </div>
 
-
 `;
 
 let otherDayForecast = ''
